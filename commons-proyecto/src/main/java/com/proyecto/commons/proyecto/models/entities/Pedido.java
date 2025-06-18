@@ -40,7 +40,7 @@ public class Pedido {
 	private Long idEstado;
 	
 	@ElementCollection
-	@CollectionTable(name = "PEDIDO_PRODUCTOS", joinColumns = @JoinColumn(name = "ID_PRODUCTO"))
+	@CollectionTable(name = "PEDIDO_PRODUCTOS", joinColumns = @JoinColumn(name = "ID_PEDIDO"))
 	private List<ProductoPedido> productos;
 
 	public Long getId() {

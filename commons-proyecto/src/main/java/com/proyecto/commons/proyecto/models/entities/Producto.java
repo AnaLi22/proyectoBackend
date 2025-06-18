@@ -5,24 +5,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 
 @Entity
 @Table (name = "PRODUCTOS_TEMPORAL")
 public class Producto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_PRODUCTO")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTOS_SEQ")
+	@SequenceGenerator(name = "PRODUCTOS_SEQ", sequenceName = "PRODUCTOS_SEQ", allocationSize = 1)
+	@Column(name = "ID_PRODUCTO", nullable = false)
 	private Long id;
-	@Column(name = "NOMBRE")
+	@Column(name = "NOMBRE", nullable = false)          				//Valida que el campo no debe estar vacio
 	private String nombre;
-	@Column(name = "DESCRIPCION")
+	@Column(name = "DESCRIPCION", nullable = false)						//Valida que el campo no debe estar vacio
 	private String descripcion;
 	@Column(name = "PRECIO")
+	@Min(value = 0, message = "El precio no puede ser negativo") 		//Valida que el precio no puede ser negativo
 	private Double precio;
+
 	@Column(name = "STOCK")
+	@Min(value = 0, message = "El stock no puede ser negativo")			//Valida que el stock no puede ser negativo
 	private Integer stock;
+
 	public Long getId() {
 		return id;
 	}
