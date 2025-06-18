@@ -1,4 +1,4 @@
-package com.proyecto.productos.dto;
+package com.proyecto.commons.proyecto.dto;
 
 public record ProductoRequest(
 		

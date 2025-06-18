@@ -2,10 +2,10 @@ package com.proyecto.productos.mapper;
 
 import org.springframework.stereotype.Component;
 
+import com.proyecto.commons.proyecto.dto.ProductoRequest;
+import com.proyecto.commons.proyecto.dto.ProductoResponse;
 import com.proyecto.commons.proyecto.mappers.CommonMapper;
-import com.proyecto.productos.dto.ProductoRequest;
-import com.proyecto.productos.dto.ProductoResponse;
-import com.proyecto.productos.models.entities.Producto;
+import com.proyecto.commons.proyecto.models.entities.Producto;
 
 @Component
 public class ProductoMapper extends CommonMapper<ProductoRequest, ProductoResponse, Producto>{

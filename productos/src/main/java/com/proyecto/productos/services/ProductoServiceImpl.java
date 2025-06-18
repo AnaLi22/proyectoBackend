@@ -7,10 +7,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.proyecto.productos.dto.ProductoRequest;
-import com.proyecto.productos.dto.ProductoResponse;
+import com.proyecto.commons.proyecto.dto.ProductoRequest;
+import com.proyecto.commons.proyecto.dto.ProductoResponse;
+import com.proyecto.commons.proyecto.models.entities.Producto;
 import com.proyecto.productos.mapper.ProductoMapper;
-import com.proyecto.productos.models.entities.Producto;
 import com.proyecto.productos.models.repositories.ProductoRepository;
 
 
