@@ -2,6 +2,11 @@ spring:
   application:
     name: api-gateway
 
+  security:
+   user:
+    name: ${AUTH_USER}
+    password: ${AUTH_PASS}
+
   cloud:
     loadbalancer:
       enabled: true

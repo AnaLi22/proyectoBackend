@@ -12,7 +12,7 @@ public class ProductoMapper extends CommonMapper<ProductoRequest, ProductoRespon
 	
 	@Override
 	public ProductoResponse entityToDTO(Producto entity) {
-		if (entity != null) {
+		if (entity == null) {
 			ProductoResponse response = new ProductoResponse(
 					entity.getId(),
 					entity.getNombre(),

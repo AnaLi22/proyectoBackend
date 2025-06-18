@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.clientes.mappers.ClienteMapper;
-import com.proyecto.clientes.models.repositories.ClienteRepository;
 import com.proyecto.commons.proyecto.dto.ClienteRequest;
 import com.proyecto.commons.proyecto.dto.ClienteResponse;
 import com.proyecto.commons.proyecto.models.entities.Cliente;
@@ -64,6 +63,7 @@ public class ClienteServiceImpl implements ClienteService{
 			clienteDb.setEmail(request.email());
 			clienteDb.setTelefono(request.telefono());
 			clienteDb.setDireccion(request.direccion());
+			return mapper.entityToDTO(repository.save(clienteDb));
 			
 		}
 		return null;

@@ -34,6 +34,7 @@ public class ClienteMapper extends CommonMapper<ClienteRequest, ClienteResponse,
 			cliente.setEmail(request.email());
 			cliente.setTelefono(request.telefono());
 			cliente.setDireccion(request.direccion());
+			return cliente;
 		}
 		return null;
 	}
