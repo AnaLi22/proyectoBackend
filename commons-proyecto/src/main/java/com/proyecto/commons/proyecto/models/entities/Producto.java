@@ -10,13 +10,13 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 
 @Entity
-@Table (name = "PRODUCTOS_TEMPORAL")
+@Table (name = "PRODUCTOS")
 public class Producto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTOS_SEQ")
 	@SequenceGenerator(name = "PRODUCTOS_SEQ", sequenceName = "PRODUCTOS_SEQ", allocationSize = 1)
-	@Column(name = "ID_PRODUCTO", nullable = false)
+	@Column(name = "ID_PRODUCTO")
 	private Long id;
 	@Column(name = "NOMBRE", nullable = false)          				//Valida que el campo no debe estar vacio
 	private String nombre;

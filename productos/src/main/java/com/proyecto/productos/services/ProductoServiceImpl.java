@@ -21,8 +21,8 @@ public class ProductoServiceImpl implements ProductoService{
 	private ProductoRepository repository;
 	
 	private ProductoMapper mapper;
-	
-	public ProductoServiceImpl( ProductoRepository repository) {
+
+	public ProductoServiceImpl(ProductoRepository repository, ProductoMapper mapper) {
 		this.repository = repository;
 		this.mapper = mapper;
 	}
@@ -31,8 +31,8 @@ public class ProductoServiceImpl implements ProductoService{
 	@Transactional(readOnly = true)
 	public List<ProductoResponse> listar() {
 		List<ProductoResponse> productos = new ArrayList<>();
-		repository.findAll().forEach( entity ->{
-			productos.add(mapper.entityToDTO(entity));
+		repository.findAll().forEach( producto ->{
+			productos.add(mapper.entityToDTO(producto));
 		});
 		return productos;
 	}

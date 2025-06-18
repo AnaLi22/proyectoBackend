@@ -1,8 +1,0 @@
-package com.proyecto.commons.proyecto.dto;
-
-public class Snippet {
-	public static void main(String[] args) {
-		
-	}
-}
-

@@ -12,7 +12,7 @@ public class ProductoMapper extends CommonMapper<ProductoRequest, ProductoRespon
 	
 	@Override
 	public ProductoResponse entityToDTO(Producto entity) {
-		if (entity == null) {
+		if (entity != null) {
 			ProductoResponse response = new ProductoResponse(
 					entity.getId(),
 					entity.getNombre(),
@@ -28,12 +28,12 @@ public class ProductoMapper extends CommonMapper<ProductoRequest, ProductoRespon
 	@Override
 	public Producto dtoToEntity(ProductoRequest request) {
 		if (request != null) {
-			Producto productoEntity = new Producto();
-			productoEntity.setNombre(request.nombre());
-			productoEntity.setDescripcion(request.descripcion());
-			productoEntity.setPrecio(request.precio());
-			productoEntity.setStock(request.stock());
-			return productoEntity;		
+			Producto producto = new Producto();
+			producto.setNombre(request.nombre());
+			producto.setDescripcion(request.descripcion());
+			producto.setPrecio(request.precio());
+			producto.setStock(request.stock());
+			return producto;		
 		}
 		return null;
 	}

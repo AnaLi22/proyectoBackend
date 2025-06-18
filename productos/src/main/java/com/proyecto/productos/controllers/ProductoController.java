@@ -13,7 +13,4 @@ public class ProductoController extends CommonController<ProductoRequest, Produc
 	public ProductoController(ProductoService service) {
 		super(service);
 	}
-	
-	
-	
 }
