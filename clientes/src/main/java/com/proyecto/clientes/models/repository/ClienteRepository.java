@@ -1,4 +1,4 @@
-package com.proyecto.clientes.services;
+package com.proyecto.clientes.models.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

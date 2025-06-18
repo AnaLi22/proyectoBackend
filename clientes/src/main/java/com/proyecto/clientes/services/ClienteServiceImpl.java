@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.clientes.mappers.ClienteMapper;
+import com.proyecto.clientes.models.repository.ClienteRepository;
 import com.proyecto.commons.proyecto.dto.ClienteRequest;
 import com.proyecto.commons.proyecto.dto.ClienteResponse;
 import com.proyecto.commons.proyecto.models.entities.Cliente;
@@ -21,7 +22,6 @@ public class ClienteServiceImpl implements ClienteService{
 
 	
 	public ClienteServiceImpl(ClienteRepository repository, ClienteMapper mapper) {
-		super();
 		this.repository = repository;
 		this.mapper = mapper;
 	}
@@ -53,6 +53,7 @@ public class ClienteServiceImpl implements ClienteService{
 	}
 
 	@Override
+	@Transactional
 	public ClienteResponse actualizar(ClienteRequest request, Long id) {
 		Optional<Cliente> cliente = repository.findById(id);
 		if (cliente.isPresent()) {
@@ -70,6 +71,7 @@ public class ClienteServiceImpl implements ClienteService{
 	}
 
 	@Override
+	@Transactional
 	public ClienteResponse eliminar(Long id) {
 		Optional<Cliente> cliente = repository.findById(id);
 		if (cliente.isPresent()) {
