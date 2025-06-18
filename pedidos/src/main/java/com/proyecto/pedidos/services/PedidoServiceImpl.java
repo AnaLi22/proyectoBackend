@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.proyecto.commons.proyecto.dto.PedidoRequest;
 import com.proyecto.commons.proyecto.dto.PedidoResponse;
 import com.proyecto.commons.proyecto.dto.ProductoCantidadRequest;
-import com.proyecto.commons.proyecto.dto.ProductoResponse;
 import com.proyecto.commons.proyecto.models.entities.Pedido;
 import com.proyecto.commons.proyecto.models.entities.ProductoPedido;
 import com.proyecto.pedidos.clients.ClienteClient;
@@ -145,8 +144,4 @@ public class PedidoServiceImpl implements PedidoService{
 	}
 
 	
-	
-	
-	
-
 }

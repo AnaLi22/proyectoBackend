@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.proyecto.commons.proyecto.dto.ClienteResponse;
 
-@FeignClient(name = "cliente")
+@FeignClient(name = "clientes")
 public interface ClienteClient {
 	
-	@GetMapping
+	@GetMapping("/{id}")
 	ClienteResponse getCliente(@PathVariable Long id);
 
 }
