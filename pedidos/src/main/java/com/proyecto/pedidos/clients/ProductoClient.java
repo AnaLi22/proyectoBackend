@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.proyecto.commons.proyecto.dto.ProductoResponse;
 
-@FeignClient(name = "producto")
+@FeignClient(name = "productos")
 public interface ProductoClient {
 	
 	@GetMapping("/{id}")

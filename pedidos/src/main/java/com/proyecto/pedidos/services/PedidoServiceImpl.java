@@ -67,7 +67,7 @@ public class PedidoServiceImpl implements PedidoService{
 
 	    double total = 0.0;
 
-	    if (pedido.getProductos() != null && !pedido.getProductos().isEmpty()) {
+	    if (pedido.getProductos() != null) {
 	        for (ProductoPedido producto : pedido.getProductos()) {
 	            double subtotal = producto.getPrecio() * producto.getCantidad();
 	            total += subtotal;
@@ -75,6 +75,9 @@ public class PedidoServiceImpl implements PedidoService{
 	    }
 
 	    pedido.setTotal(total);
+	    
+	    // Asignar estado por defecto (ejemplo: 1 = "Pendiente")
+	    pedido.setIdEstado(1L);
 
 	    Pedido pedidoGuardado = repository.save(pedido);
 	    return mapper.entityToDTO(pedidoGuardado);
