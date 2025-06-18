@@ -1,6 +1,6 @@
 package com.proyecto.commons.proyecto.dto;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public record PedidoResponse(
@@ -10,7 +10,7 @@ public record PedidoResponse(
 		Double total,
 		Date fechaCreacion,
 		Long idEstado,
-		List<ProductoResponse> producto
+		List<ProductoResponse> productos
 		) {
 	
 }

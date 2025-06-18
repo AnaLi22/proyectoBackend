@@ -12,12 +12,7 @@ public record PedidoRequest(
 		Long idCliente,
 		
 		@NotNull(message = "No puede ser nulo")
-		List<ProductoCantidadRequest> productos,
-		
-		@NotNull(message = "El Estado no puede ser nulo")
-		@Min(value = 1 , message = "El Estado debe ser minimo 1")
-		@Max(value = 4, message = "El Estado debe ser de maximo 2")
-		Long idEstado
+		List<ProductoCantidadRequest> productos
 		) {
 
 }

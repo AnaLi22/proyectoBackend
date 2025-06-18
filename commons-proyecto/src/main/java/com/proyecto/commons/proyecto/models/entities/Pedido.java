@@ -79,8 +79,8 @@ public class Pedido {
 		return idEstado;
 	}
 
-	public void setIdEstado(Long idEstado) {
-		this.idEstado = idEstado;
+	public void setIdEstado(Long i) {
+		this.idEstado = i;
 	}
 
 	public List<ProductoPedido> getProductos() {
