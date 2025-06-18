@@ -15,7 +15,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "CLIENTES_SEQ")
 	@SequenceGenerator(name = "CLIENTES_SEQ", sequenceName = "CLIENTES_SEQ", allocationSize = 1)
-	@Column(name = "ID_CLIENTE", nullable = false)
+	@Column(name = "ID_CLIENTE")
 	private Long id;
 	@Column(name = "NOMBRE", nullable = false)
 	private String nombre;
