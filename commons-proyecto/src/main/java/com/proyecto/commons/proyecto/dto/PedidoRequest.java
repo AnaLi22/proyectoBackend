@@ -12,7 +12,9 @@ public record PedidoRequest(
 		Long idCliente,
 		
 		@NotNull(message = "La lista de productos no puede ser nulo")
-		List<ProductoCantidadRequest> productos
+		List<ProductoCantidadRequest> productos,
+		
+		Long idEstado
 		) {
 
 }

@@ -3,6 +3,7 @@ package com.proyecto.pedidos.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -87,24 +88,40 @@ public class PedidoServiceImpl implements PedidoService{
 	@Override
 	@Transactional
 	public PedidoResponse actualizar(PedidoRequest request, Long id) {
-	    Optional<Pedido> pedido = repository.findById(id);
+	    Optional<Pedido> pedidoOptional = repository.findById(id);
 
-	    if (pedido.isPresent()) {
-	        return null;
+	    if (pedidoOptional.isEmpty()) {
+	        throw new NoSuchElementException("Pedido con ID " + id + " no encontrado.");
 	    }
 
-	    Pedido pedidoExistente = pedido.get();
+	    Pedido pedidoExistente = pedidoOptional.get();
+	    Long estadoActual = pedidoExistente.getIdEstado();
 
-	    // No permitir actualizar si el pedido ya fue entregado o cancelado
-	    if (pedidoExistente.getIdEstado() != null && 
-	        (pedidoExistente.getIdEstado() == 3 || pedidoExistente.getIdEstado() == 4)) {
+	    // No permitir editar si ya fue entregado o cancelado
+	    if (estadoActual == 3 || estadoActual == 4) {
 	        throw new IllegalStateException("No se puede editar un pedido entregado o cancelado.");
 	    }
 
-	    // Guardar cambios
+	    Long nuevoEstado = request.idEstado();
+	    
+	 // No permitir regresar a un estado anterior
+	    if (nuevoEstado < estadoActual) {
+	        throw new IllegalStateException("No se puede cambiar a un estado anterior.");
+	    }
+
+	    // Validar que el nuevo estado sea Enviado (2) o Entregado (3)
+	    if (nuevoEstado != 2 && nuevoEstado != 3) {
+	        throw new IllegalArgumentException("Solo se puede cambiar el estado a 'Enviado' (2) o 'Entregado' (3).");
+	    }
+
+	    
+
+	    pedidoExistente.setIdEstado(nuevoEstado);
 	    Pedido actualizado = repository.save(pedidoExistente);
 	    return mapper.entityToDTO(actualizado);
 	}
+
+
 
 
 	@Override
