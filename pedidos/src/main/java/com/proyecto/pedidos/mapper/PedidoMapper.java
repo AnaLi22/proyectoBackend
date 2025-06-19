@@ -25,12 +25,13 @@ public class PedidoMapper extends CommonMapper<PedidoRequest, PedidoResponse, Pe
 	private ClienteClient clienteClient;
 	
 	
-
+	
 	public PedidoMapper(ProductoClient productoClient, ClienteClient clienteClient) {
 		this.productoClient = productoClient;
 		this.clienteClient = clienteClient;
 	}
 
+	@Override
 	public PedidoResponse entityToDTO(Pedido entity) {
 	    if (entity == null) {
 	        return null;

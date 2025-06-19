@@ -15,12 +15,12 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PEDIDO")
+@Table(name = "PEDIDOS")
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDO_SEQ")
-	@SequenceGenerator(name = "PEDIDO_SEQ", sequenceName = "PEDIDO_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDOS_SEQ")
+	@SequenceGenerator(name = "PEDIDOS_SEQ", sequenceName = "PEDIDOS_SEQ", allocationSize = 1)
 	@Column(name = "ID_PEDIDO")
 	private Long id;
 	
@@ -40,7 +40,7 @@ public class Pedido {
 	private Long idEstado;
 	
 	@ElementCollection
-	@CollectionTable(name = "PEDIDO_PRODUCTOS", joinColumns = @JoinColumn(name = "ID_PEDIDO"))
+	@CollectionTable(name = "PRODUCTOS_PEDIDO", joinColumns = @JoinColumn(name = "ID_PEDIDO"))
 	private List<ProductoPedido> productos;
 
 	public Long getId() {
