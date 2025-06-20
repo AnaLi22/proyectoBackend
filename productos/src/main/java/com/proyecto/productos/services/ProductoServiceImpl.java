@@ -2,6 +2,7 @@ package com.proyecto.productos.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -66,8 +67,9 @@ public class ProductoServiceImpl implements ProductoService{
 			productoDb.setPrecio(request.precio());
 			productoDb.setStock(request.stock());
 			return mapper.entityToDTO(repository.save(productoDb));
+		}else {
+		throw new NoSuchElementException();	
 		}
-		return null;
 	}
 
 	@Override
@@ -77,8 +79,20 @@ public class ProductoServiceImpl implements ProductoService{
 		if (producto.isPresent()) {
 			repository.deleteById(id);
 			return mapper.entityToDTO(producto.get());
+		}	else {
+			
+			throw new NoSuchElementException();
+			
 		}
-		return null;
+			
 	}
+
+	@Override
+	public void validarClientes(ProductoRequest request) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }

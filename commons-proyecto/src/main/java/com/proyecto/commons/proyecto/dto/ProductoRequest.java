@@ -12,10 +12,10 @@ public record ProductoRequest(
     String descripcion, 
 
     @NotNull(message = "El precio no puede ser nulo")
-    @Min(value = 0, message = "El precio no puede ser negativo")
+    @Min(value = 1, message = "El precio no puede ser negativo")
     Double precio, 
 
     @NotNull(message = "El stock no puede ser nulo")
-    @Min(value = 0, message = "El stock no puede ser negativo")
+    @Min(value = 1, message = "El stock debe ser minimo uno")
     Integer stock
 ) {}

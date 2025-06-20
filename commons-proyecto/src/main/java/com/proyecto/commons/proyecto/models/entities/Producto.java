@@ -18,15 +18,15 @@ public class Producto {
 	@SequenceGenerator(name = "PRODUCTOS_SEQ", sequenceName = "PRODUCTOS_SEQ", allocationSize = 1)
 	@Column(name = "ID_PRODUCTO")
 	private Long id;
-	@Column(name = "NOMBRE", nullable = false)          				//Valida que el campo no debe estar vacio
+	@Column(name = "NOMBRE", nullable = false, length = 30)          				//Valida que el campo no debe estar vacio
 	private String nombre;
-	@Column(name = "DESCRIPCION", nullable = false)						//Valida que el campo no debe estar vacio
+	@Column(name = "DESCRIPCION", nullable = false, length = 50)						//Valida que el campo no debe estar vacio
 	private String descripcion;
-	@Column(name = "PRECIO")
+	@Column(name = "PRECIO", nullable = false)
 	@Min(value = 0, message = "El precio no puede ser negativo") 		//Valida que el precio no puede ser negativo
 	private Double precio;
 
-	@Column(name = "STOCK")
+	@Column(name = "STOCK", nullable = false)
 	@Min(value = 0, message = "El stock no puede ser negativo")			//Valida que el stock no puede ser negativo
 	private Integer stock;
 

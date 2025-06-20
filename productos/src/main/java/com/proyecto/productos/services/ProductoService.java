@@ -10,5 +10,5 @@ import com.proyecto.commons.proyecto.services.CommonService;
 
 public interface ProductoService extends CommonService<ProductoRequest, ProductoResponse>{
 
-		
+		void validarClientes(ProductoRequest request);
 }
