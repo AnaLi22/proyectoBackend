@@ -22,7 +22,8 @@ public record ClienteRequest(
 		String email,
 		
 		@NotBlank(message = "El telefono no puede ser vacío ni nulo.")
-		@Pattern(regexp = "\\d{10}", message = "El teléfono debe contener exactamente 10 dígitos.")
+		@Pattern(regexp="^[0-9]{10}$", message ="El número de teléfono solo permite números del 0-9")
+		@Size(min = 10, max = 10, message = "El número de teléfono debe teber exactamente 10 dígitos")
 		String telefono,
 		
 		@Size(max =100, message = "No puedes escribir más.")

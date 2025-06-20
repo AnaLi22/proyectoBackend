@@ -2,6 +2,7 @@ package com.proyecto.clientes.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import com.proyecto.commons.proyecto.models.entities.Cliente;
 public class ClienteServiceImpl implements ClienteService{
 
 	private ClienteRepository repository;
+	
 	private ClienteMapper mapper;
 
 	
@@ -25,6 +27,7 @@ public class ClienteServiceImpl implements ClienteService{
 		this.repository = repository;
 		this.mapper = mapper;
 	}
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<ClienteResponse> listar() {
@@ -35,6 +38,8 @@ public class ClienteServiceImpl implements ClienteService{
 		});
 	return clientes;
 	}
+	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<ClienteResponse> obtenerPorId(Long id) {
@@ -66,9 +71,12 @@ public class ClienteServiceImpl implements ClienteService{
 			clienteDb.setDireccion(request.direccion());
 			return mapper.entityToDTO(repository.save(clienteDb));
 			
+		}else {
+			throw new NoSuchElementException();
 		}
-		return null;
+		
 	}
+	
 
 	@Override
 	@Transactional
@@ -78,9 +86,17 @@ public class ClienteServiceImpl implements ClienteService{
 			repository.deleteById(id);
 			return mapper.entityToDTO(cliente.get());
 			
+		}else {
+			throw new NoSuchElementException();
 		}
-		return null;
+	}
+	
+	
+	@Override
+	public void validarClientes(ClienteRequest request) {
+		
 	}
 
+	
 	
 }

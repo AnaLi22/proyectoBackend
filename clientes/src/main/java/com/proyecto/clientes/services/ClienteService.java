@@ -6,6 +6,7 @@ import com.proyecto.commons.proyecto.services.CommonService;
 
 public interface ClienteService extends CommonService<ClienteRequest, ClienteResponse> {
 
+	void validarClientes(ClienteRequest request);
 	
 	
 }

@@ -26,10 +26,8 @@ public class Pedido {
 	
 	@Column(name = "ID_CLIENTE", nullable = false)
 	private Long idCliente;
-	/*
-	@Column(name = "ID_PRODUCTO", nullable = false)
-	private Long idProducto;
-	*/
+
+
 	@Column(name = "TOTAL", nullable = false)
 	private Double total;
 	

@@ -77,7 +77,6 @@ public class PedidoServiceImpl implements PedidoService{
 
 	    pedido.setTotal(total);
 	    
-	    // Asignar estado por defecto (ejemplo: 1 = "Pendiente")
 	    pedido.setIdEstado(1L);
 
 	    Pedido pedidoGuardado = repository.save(pedido);
@@ -97,19 +96,16 @@ public class PedidoServiceImpl implements PedidoService{
 	    Pedido pedidoExistente = pedidoOptional.get();
 	    Long estadoActual = pedidoExistente.getIdEstado();
 
-	    // No permitir editar si ya fue entregado o cancelado
 	    if (estadoActual == 3 || estadoActual == 4) {
 	        throw new IllegalStateException("No se puede editar un pedido entregado o cancelado.");
 	    }
 
 	    Long nuevoEstado = request.idEstado();
 	    
-	 // No permitir regresar a un estado anterior
 	    if (nuevoEstado < estadoActual) {
 	        throw new IllegalStateException("No se puede cambiar a un estado anterior.");
 	    }
 
-	    // Validar que el nuevo estado sea Enviado (2) o Entregado (3)
 	    if (nuevoEstado != 2 && nuevoEstado != 3) {
 	        throw new IllegalArgumentException("Solo se puede cambiar el estado a 'Enviado' (2) o 'Entregado' (3).");
 	    }
@@ -135,12 +131,10 @@ public class PedidoServiceImpl implements PedidoService{
 
 	    Pedido pedido = pedidoOptional.get();
 
-	    // Si ya está cancelado, no hacemos nada
 	    if (pedido.getIdEstado() != null && pedido.getIdEstado() == 4) {
 	        throw new IllegalStateException("El pedido ya se encuentra cancelado.");
 	    }
 
-	    // Cambiar estado a cancelado (ID = 4)
 	    pedido.setIdEstado(4L);
 
 	    Pedido pedidoCancelado = repository.save(pedido);
